@@ -22,7 +22,16 @@ export default class ProductList extends Component {
           });
       });
   };
+  deleteItem = (id) => {
+    const formData = { countId: id };
+    axios({ method: "delete", url: "/products", data: formData })
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
+      });
 
+    this.getAllProducts();
+  };
   render() {
     const { products } = this.state;
     return (
@@ -31,6 +40,7 @@ export default class ProductList extends Component {
           <ul className={CSS.productsList}>
             {products.map((el) => (
               <li className={CSS.productListItem} key={el.countId}>
+                <button onClick={(e) => this.deleteItem(el.countId)}>X</button>
                 <p>
                   Назва: <span className={CSS.productListTitle}>{el.name}</span>
                 </p>

@@ -20,4 +20,14 @@ const createProduct = async (productIncome) => {
     console.error(err.message);
   }
 };
-module.exports = { getAllProductsDb, createProduct };
+
+const deleteProd = async (productId) => {
+  try {
+    const product = await ProductModel.findOne(productId);
+    await product.deleteOne();
+    return product.name;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+module.exports = { getAllProductsDb, createProduct, deleteProd };

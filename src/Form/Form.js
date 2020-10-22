@@ -37,6 +37,7 @@ export default class Form extends Component {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
+
   handleSubmit = (e) => {
     const {
       name,
