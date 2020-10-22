@@ -38,9 +38,18 @@ const updateProductDb = async (countId, parametr) => {
     console.error(err.message);
   }
 };
+const getProductByIdDB = async (countId) => {
+  try {
+    const product = await ProductModel.findOne({ countId: countId });
+    return product;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
 module.exports = {
   getAllProductsDb,
   createProduct,
   deleteProd,
   updateProductDb,
+  getProductByIdDB,
 };

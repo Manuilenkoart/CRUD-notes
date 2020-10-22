@@ -59,6 +59,7 @@ export default class Form extends Component {
       quantity,
       text,
     };
+
     axios({ method: "post", url: "/products", data: formData })
       .then((response) => {
         this.setState({ responsname: response.data.status });
@@ -69,6 +70,7 @@ export default class Form extends Component {
             responseError: "Увы что-то пошло не так  :(",
           });
       });
+    this.props.onGetAllProducts();
   };
 
   render() {
