@@ -14,7 +14,7 @@ export default class Form extends Component {
     text: "",
     responsname: null,
     responseError: null,
-    isModalOpen: true,
+    isModalOpen: false,
   };
   closeModal = () => {
     this.setState({ isModalOpen: false });
@@ -89,6 +89,7 @@ export default class Form extends Component {
           <button className={CSS.openModalButton} onClick={this.openModal}>
             +
           </button>
+          <h3 className={CSS.modalTitle}>Додати товар</h3>
           <button className={CSS.closeModalButton} onClick={this.closeModal}>
             X
           </button>
@@ -159,7 +160,7 @@ export default class Form extends Component {
                   className={`${CSS.formGroup} ${CSS.textarea}`}
                   name="text"
                   value={text}
-                  placeholder="comment..."
+                  placeholder="add comment..."
                   onChange={this.handleChange}
                 ></textarea>
                 <button

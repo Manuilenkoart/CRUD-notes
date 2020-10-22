@@ -1,10 +1,23 @@
-const createProduct = () => {
-  const product = new Product({
-    name: null,
-  });
+const ProductModel = require("../models/productsModel");
 
-  product.save(function (err) {
-    if (err) return console.log(err);
-    console.log("Сохранен объект", product);
-  });
+const getAllProductsDb = async () => {
+  try {
+    const allProducts = await ProductModel.find()
+      .limit(20)
+      .sort({ countId: -1 });
+    return allProducts;
+  } catch (err) {
+    console.error(err.message);
+  }
 };
+const createProduct = async (productIncome) => {
+  const product = new ProductModel(productIncome);
+
+  try {
+    const savedProduct = await product.save();
+    return savedProduct;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+module.exports = { getAllProductsDb, createProduct };

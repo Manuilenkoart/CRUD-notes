@@ -1,0 +1,30 @@
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.productListItem {
+  width: 320px;
+  box-shadow: 1px 23px 20px 0px #ebebeb;
+  border: #f0fff0;
+  font: inherit;
+  border-radius: 2px;
+  outline: none;
+  margin: 15px;
+  padding: 10px 0 10px 40px;
+}
+.productListTitle {
+  font-family: var(--mainFont);
+  font-weight: 500;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 768px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}

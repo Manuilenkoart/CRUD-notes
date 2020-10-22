@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
-const { DB } = require();
-mongoose.Promise = global.Promise;
+const autoIncrement = require("mongoose-auto-increment");
+
+const { DB } = require("../config");
+// mongoose.Promise = global.Promise;
 
 mongoose
   .connect(DB, {
@@ -14,3 +16,4 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+autoIncrement.initialize(mongoose.connection);

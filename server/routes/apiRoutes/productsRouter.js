@@ -4,10 +4,10 @@ const {
   postProduct,
   updateProduct,
   deleteProduct,
-  getProduct,
+  getAllProduct,
 } = require("../../controllers/index");
 
-router.get("/", getProduct);
+router.get("/", getAllProduct);
 router.delete("/", deleteProduct);
 router.put("/", updateProduct);
 router.post("/", postProduct);

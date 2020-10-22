@@ -1,11 +1,12 @@
 import React from "react";
-
-import "./App.css";
+import "./styles/main.css";
 import Form from "./Form/Form";
+import ProductList from "./ProductList/ProductList";
 function App() {
   return (
-    <div className="App">
+    <div>
       <Form />
+      <ProductList />
     </div>
   );
 }
