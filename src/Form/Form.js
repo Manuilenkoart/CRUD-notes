@@ -70,7 +70,6 @@ export default class Form extends Component {
             responseError: "Увы что-то пошло не так  :(",
           });
       });
-    this.props.onGetAllProducts();
   };
 
   render() {
