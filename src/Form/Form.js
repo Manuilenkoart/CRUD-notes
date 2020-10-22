@@ -20,7 +20,18 @@ export default class Form extends Component {
     this.setState({ isModalOpen: false });
   };
   openModal = () => {
-    this.setState({ isModalOpen: true });
+    this.setState({
+      name: "",
+      price: "",
+      category: "",
+      provider: "",
+      shelfLife: "",
+      quantity: "",
+      text: "",
+      responsname: null,
+      responseError: null,
+      isModalOpen: true,
+    });
   };
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -47,13 +58,12 @@ export default class Form extends Component {
       quantity,
       text,
     };
-    axios({ method: "post", url: "/addProduct", data: formData })
+    axios({ method: "post", url: "/products", data: formData })
       .then((response) => {
-        this.setState({ responsname: response.data });
-        // this.setState({ name: "", text: "" });
+        this.setState({ responsname: response.data.status });
       })
       .catch((error) => {
-        if (error.response.status !== 200 || 201 || 202)
+        if (error.response.status != 200 || 201)
           this.setState({
             responseError: "Увы что-то пошло не так  :(",
           });
@@ -73,7 +83,6 @@ export default class Form extends Component {
       responseError,
       isModalOpen,
     } = this.state;
-
     return (
       <div className={CSS.container}>
         <div className={CSS.revervePlaceText}>
