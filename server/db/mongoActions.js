@@ -30,4 +30,17 @@ const deleteProd = async (productId) => {
     console.error(err.message);
   }
 };
-module.exports = { getAllProductsDb, createProduct, deleteProd };
+const updateProductDb = async (countId, parametr) => {
+  try {
+    const updatedProd = await ProductModel.updateOne(countId, parametr);
+    return updatedProd;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+module.exports = {
+  getAllProductsDb,
+  createProduct,
+  deleteProd,
+  updateProductDb,
+};
