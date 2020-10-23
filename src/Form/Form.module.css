@@ -7,7 +7,7 @@
 .revervePlaceText {
   text-align: center;
   position: relative;
-  height: 45px;
+  /* height: 45px; */
   font-family: var(--mainFont);
   font-size: 18px;
   font-weight: 400;
@@ -46,7 +46,6 @@
 .successMail {
   text-align: center;
   font-family: var(--mainFont);
-
   color: #000;
   font-size: 30px;
   font-weight: 400;
@@ -54,8 +53,8 @@
 .from {
   display: flex;
   flex-direction: column;
-
   margin: auto;
+  padding-top: 15px;
 }
 .formGroup {
   width: 80%;

@@ -3,6 +3,8 @@ import axios from "axios";
 import CSS from "./Form.module.css";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { BsFillXCircleFill } from "react-icons/bs";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default class Form extends Component {
   state = {
     name: "",
@@ -63,15 +65,19 @@ export default class Form extends Component {
 
     axios({ method: "post", url: "/products", data: formData })
       .then((response) => {
+        toast.success(`${response.data.status}`);
+
         this.setState({ responsname: response.data.status });
 
         this.props.onIsSubmit(response.data.status);
       })
       .catch((error) => {
         if (error.response.status != 200 || 201)
-          this.setState({
-            responseError: "Увы что-то пошло не так  :(",
-          });
+          toast.warning("Увы что-то пошло не так  :(");
+
+        this.setState({
+          responseError: "Увы что-то пошло не так  :(",
+        });
       });
   };
 
@@ -85,7 +91,6 @@ export default class Form extends Component {
       quantity,
       text,
       responsname,
-      responseError,
       isModalOpen,
     } = this.state;
     return (
@@ -98,13 +103,11 @@ export default class Form extends Component {
           <button className={CSS.closeModalButton} onClick={this.closeModal}>
             <BsFillXCircleFill />
           </button>
-
-          {responseError && <p>{responseError}</p>}
         </div>
         {isModalOpen && (
           <div>
             {responsname ? (
-              <p className={CSS.successMail}>{responsname}</p>
+              this.closeModal()
             ) : (
               <form onSubmit={this.handleSubmit} className={CSS.from}>
                 <input

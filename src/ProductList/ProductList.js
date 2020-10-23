@@ -4,6 +4,8 @@ import CSS from "./ProductList.module.css";
 import Form from "../Form/Form";
 import FormFilter from "../FormFilter/FormFilter";
 import { FaPrescriptionBottle } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default class ProductList extends Component {
   state = {
@@ -30,9 +32,7 @@ export default class ProductList extends Component {
       })
       .catch((error) => {
         if (error.response.status != 200 || 201)
-          this.setState({
-            responseError: "Увы что-то пошло не так  :(",
-          });
+          toast.warning("Увы что-то пошло не так  :(");
       });
   };
   deleteItem = (id) => {
@@ -54,6 +54,7 @@ export default class ProductList extends Component {
     const { products } = this.state;
     return (
       <div className={CSS.container}>
+        <ToastContainer />
         <Form onIsSubmit={this.isSubmit} />
         <FormFilter onSaveFilteredProduct={this.saveFilteredProduct} />
 

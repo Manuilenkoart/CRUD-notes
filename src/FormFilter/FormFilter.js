@@ -3,7 +3,8 @@ import axios from "axios";
 import CSS from "./FormFilter.module.css";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { BsFillXCircleFill } from "react-icons/bs";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default class Form extends Component {
   state = {
     countId: "",
@@ -33,29 +34,24 @@ export default class Form extends Component {
 
     axios({ method: "get", url: `/products/${countId}` })
       .then((response) => {
-        console.log(response);
+        toast.success(`${response.data.status}`);
+
         this.setState({
           responsname: response.data.status,
         });
         this.props.onSaveFilteredProduct(response.data.data);
       })
       .catch((error) => {
-        console.log(error);
         if (error.response.status != 200 || 201)
-          this.setState({
-            responseError: "Id не знайдено",
-          });
+          toast.warning("Id не знайдено");
+        this.setState({
+          responseError: "Id не знайдено",
+        });
       });
   };
 
   render() {
-    const {
-      countId,
-
-      responsname,
-      responseError,
-      isModalOpen,
-    } = this.state;
+    const { countId, responsname, isModalOpen } = this.state;
     return (
       <div className={CSS.container}>
         <div className={CSS.revervePlaceText}>
@@ -66,13 +62,11 @@ export default class Form extends Component {
           <button className={CSS.closeModalButton} onClick={this.closeModal}>
             <BsFillXCircleFill />
           </button>
-
-          {responseError && <p>{responseError}</p>}
         </div>
         {isModalOpen && (
           <div>
             {responsname ? (
-              <p className={CSS.successMail}>{responsname}</p>
+              this.closeModal()
             ) : (
               <form onSubmit={this.handleSubmit} className={CSS.from}>
                 <input
