@@ -63,6 +63,8 @@ export default class Form extends Component {
     axios({ method: "post", url: "/products", data: formData })
       .then((response) => {
         this.setState({ responsname: response.data.status });
+
+        this.props.onIsSubmit(response.data.status);
       })
       .catch((error) => {
         if (error.response.status != 200 || 201)

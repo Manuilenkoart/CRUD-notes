@@ -6,11 +6,21 @@ import FormFilter from "../FormFilter/FormFilter";
 export default class ProductList extends Component {
   state = {
     products: [],
+    isSubmit: null,
   };
 
   componentDidMount() {
     this.getAllProducts();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isSubmit !== this.state.isSubmit) {
+      this.getAllProducts();
+      this.setState({ isSubmit: null });
+    }
+  }
+  isSubmit = (params) => {
+    this.setState({ isSubmit: params });
+  };
   getAllProducts = () => {
     axios({ method: "get", url: "/products" })
       .then((response) => {
@@ -24,14 +34,14 @@ export default class ProductList extends Component {
       });
   };
   deleteItem = (id) => {
+    const { products } = this.state;
+    this.setState({ products: products.filter((el) => el.countId !== id) });
     const formData = { countId: id };
     axios({ method: "delete", url: "/products", data: formData })
       .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
-
-    this.getAllProducts();
   };
   saveFilteredProduct = (filtered) => {
     this.setState({
@@ -40,10 +50,9 @@ export default class ProductList extends Component {
   };
   render() {
     const { products } = this.state;
-    console.log(products);
     return (
       <div className={CSS.container}>
-        <Form onGetAllProducts={this.getAllProducts} />
+        <Form onIsSubmit={this.isSubmit} />
         <FormFilter onSaveFilteredProduct={this.saveFilteredProduct} />
 
         <>
