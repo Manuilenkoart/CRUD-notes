@@ -18,7 +18,7 @@
   right: 90%;
   border: none;
   background-color: transparent;
-  color: #000;
+  color: rgb(161, 230, 104);
   font-family: var(--mainFont);
   font-size: 30px;
 }
@@ -28,7 +28,7 @@
   right: 10%;
   border: none;
   background-color: transparent;
-  color: #000;
+  color: rgb(236, 135, 135);
   font-family: var(--mainFont);
   font-size: 30px;
 }

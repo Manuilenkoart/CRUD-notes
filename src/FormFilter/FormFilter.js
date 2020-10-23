@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CSS from "./FormFilter.module.css";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import { BsFillXCircleFill } from "react-icons/bs";
 
 export default class Form extends Component {
   state = {
@@ -58,11 +60,11 @@ export default class Form extends Component {
       <div className={CSS.container}>
         <div className={CSS.revervePlaceText}>
           <button className={CSS.openModalButton} onClick={this.openModal}>
-            +
+            <BsFillPlusCircleFill />
           </button>
           <h3 className={CSS.modalTitle}>Введiть ID товару</h3>
           <button className={CSS.closeModalButton} onClick={this.closeModal}>
-            X
+            <BsFillXCircleFill />
           </button>
 
           {responseError && <p>{responseError}</p>}

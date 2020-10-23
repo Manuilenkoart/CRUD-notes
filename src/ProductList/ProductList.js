@@ -3,6 +3,8 @@ import axios from "axios";
 import CSS from "./ProductList.module.css";
 import Form from "../Form/Form";
 import FormFilter from "../FormFilter/FormFilter";
+import { FaPrescriptionBottle } from "react-icons/fa";
+
 export default class ProductList extends Component {
   state = {
     products: [],
@@ -60,8 +62,11 @@ export default class ProductList extends Component {
             <ul className={CSS.productsList}>
               {products.map((el) => (
                 <li className={CSS.productListItem} key={el.countId}>
-                  <button onClick={(e) => this.deleteItem(el.countId)}>
-                    X
+                  <button
+                    onClick={(e) => this.deleteItem(el.countId)}
+                    className={CSS.closeCard}
+                  >
+                    <FaPrescriptionBottle />
                   </button>
                   <p>
                     Назва:{" "}
