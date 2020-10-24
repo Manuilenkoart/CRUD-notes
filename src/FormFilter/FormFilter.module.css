@@ -1,5 +1,5 @@
 .container {
-  width: 500px;
+  width: 320px;
   border: 1px solid black;
   margin: 100px auto;
 }
@@ -7,7 +7,6 @@
 .revervePlaceText {
   text-align: center;
   position: relative;
-  /* height: 45px; */
   font-family: var(--mainFont);
   font-size: 18px;
   font-weight: 400;
@@ -35,7 +34,7 @@
 .modalTitle {
   position: absolute;
   top: -50px;
-  right: calc(50% - 60px);
+  right: calc(50% - 82px);
   border: none;
   background-color: transparent;
   color: #000;
@@ -81,6 +80,9 @@
   background-color: rgba(0, 255, 50, 0.5);
 }
 @media screen and (min-width: 768px) {
+  .container {
+    width: 500px;
+  }
 }
 @media screen and (min-width: 1280px) {
 }
