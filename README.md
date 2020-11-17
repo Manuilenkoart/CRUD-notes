@@ -1,1 +1,1 @@
-CRUD (react + express.js + mongoDB) [Link DEMO](https://chatbotstudiotest.herokuapp.com/)
+CRUD (react + express.js + mongoDB) [Link DEMO](https://crudnotes.herokuapp.com/)
